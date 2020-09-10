@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:17 +0800] "GET /smbms HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:17 +0800] "GET /smbms/ HTTP/1.1" 200 1456 http-bio-8080-exec-2 752
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:21 +0800] "POST /smbms/login/doLogin.html HTTP/1.1" 302 - http-bio-8080-exec-4 1261
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:21 +0800] "GET /smbms/login/main.html HTTP/1.1" 200 2488 http-bio-8080-exec-5 225
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:23 +0800] "GET /smbms/role/roleList.html HTTP/1.1" 200 16801 http-bio-8080-exec-6 222
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:26 +0800] "GET /smbms/role/roleView.json?roleid=13 HTTP/1.1" 200 4 http-bio-8080-exec-7 8
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:27 +0800] "GET /smbms/role/roleView.json?roleid=13 HTTP/1.1" 200 4 http-bio-8080-exec-8 1
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:27 +0800] "GET /smbms/role/roleView.json?roleid=13 HTTP/1.1" 200 4 http-bio-8080-exec-9 2
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:28 +0800] "GET /smbms/role/toRoleModify.html?roleid=13 HTTP/1.1" 200 3209 http-bio-8080-exec-10 89
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:10:13:28 +0800] "GET /smbms/jsp/user.do?method=getrolelist HTTP/1.1" 404 985 http-bio-8080-exec-10 17

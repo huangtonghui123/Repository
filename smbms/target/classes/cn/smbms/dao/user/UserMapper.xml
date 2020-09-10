@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.smbms.dao.user.UserMapper">
+
+    <!--添加用户-->
+    <insert id="add" parameterType="User">
+        insert into smbms_user (userCode, userName, userPassword, userRole, gender, birthday,
+                                phone, address, creationDate, createdBy, idPicPath, workPicPath)
+        values (#{userCode}, #{userName}, #{userPassword}, #{userRole}, #{gender}, #{birthday},
+                #{phone}, #{address}, #{creationDate}, #{createdBy}, #{idPicPath}, #{workPicPath})
+    </insert>
+
+    <!--修改用户-->
+    <update id="modify" parameterType="User">
+        update smbms_user
+        set userName = #{userName},
+            gender = #{gender},
+            birthday = #{birthday},
+            phone = #{phone},
+            address = #{address},
+            userRole = #{userRole},
+            modifyBy = #{modifyBy},
+            modifyDate = #{modifyDate}
+        where id = #{id}
+    </update>
+
+    <!--修改密码-->
+    <update id="updatePwd" parameterType="User">
+        update smbms_user
+        set userPassword= #{pwd}
+        where id = #{id}
+    </update>
+
+    <!--删除用户-->
+    <delete id="deleteUserById" parameterType="User">
+        delete
+        from smbms_user
+        where id = #{delId}
+    </delete>
+
+    <!--获取登录用户-->
+    <select id="getLoginUser" resultType="cn.smbms.pojo.User">
+        select *
+        from smbms_user
+        where userCode = #{userCode}
+    </select>
+
+    <!--查询用户列表-->
+    <select id="getUserList" resultType="cn.smbms.pojo.User">
+        select u.*,r.roleName as userRoleName from smbms_user u,smbms_role r
+        <where>
+            u.userRole = r.id
+            <if test="userName != null and userName != ''">
+                and u.userName like concat('%',#{userName},'%')
+            </if>
+            <if test="userRole > 0">
+                and u.userRole = #{userRole}
+            </if>
+        </where>
+        limit #{currentPageNo},#{pageSize}
+    </select>
+
+    <!--查询用户总数-->
+    <select id="getUserCount" resultType="Integer">
+        select count(*) as count from smbms_user u,smbms_role r
+        <where>
+            u.userRole = r.id
+            <if test="userName != null and userName != ''">
+                and u.userName like concat('%',#{userName},'%')
+            </if>
+            <if test="userRole > 0">
+                and u.userRole = #{userRole}
+            </if>
+        </where>
+    </select>
+
+    <!--根据用户ID查询用户-->
+    <select id="getUserById" resultType="cn.smbms.pojo.User">
+        select u.*,r.roleName as userRoleName from smbms_user u,smbms_role r
+        <where>
+            u.id = #{id}
+        </where>
+        and u.userRole = r.id
+    </select>
+
+</mapper>
